@@ -1,0 +1,323 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block sidebar %}
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu">
+                  <li>
+                       <a class="" href="{% url 'pythonnav:index' %}">
+                          <i class="icon-dashboard"></i>
+                          <span>首页</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu active">
+                      <a href="javascript:;" class="">
+                          <i class="icon-book"></i>
+                          <span>Python</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub active">
+                          <li><a class="" href="{% url 'pythonnav:calendar_html' %}">学习路线</a></li>
+                          <li><a class="" href="buttons.html">学习资源</a></li>
+                          <li class="active"><a class="" href="{% url 'pythonnav:blogindex_html' %}"><i class="icon-cog"></i>技术交流</a></li>
+                          <li><a href="{% url 'pythonnav:profile_html' %}"></i>我的主页</a></li>
+
+                      </ul>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon-tasks"></i>
+                          <span>资源</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="{% url 'resourcedownload:dynamic_table_html' %}">下载站</a></li>
+                          <li><a class="" href="{% url 'resourcedownload:querystation_html' %}">查询站</a></li>
+                          <li><a class="" href="http://devnav.win/">更新中/a></li>
+                      </ul>
+                  </li>
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+{% endblock %}
+
+{% block maincontent %}
+
+
+<section id="main-content">
+          <section class="wrapper">
+              <!--mail inbox start-->
+              <div class="mail-box">
+                  <aside class="sm-side">
+
+                      <div class="user-head">
+                          <form role="form" enctype="multipart/form-data" action="{% url 'pythonnav:uploadImg' %}" method="POST">
+                            {% csrf_token %}
+                          <a href="javascript:;" class="inbox-avatar">
+
+
+                              <a data-toggle="modal" href="#ChangeHeadImgModal">
+                              <img src="{{ img.headImg.url }}" alt="" width="64" height="64">
+                              </a>
+
+
+                          </a>
+                          <div class="user-name">
+                              <h5><a href="#">{{ request.user.username }}</a></h5>
+                              <span><a href="#">{{ request.user.email }}</a></span>
+
+                          </div>
+
+                          </form>
+                      </div>
+
+
+                      <div class="inbox-body">
+                          <a class="btn btn-compose" data-toggle="modal" href="#myModal">
+                              发布问题
+                          </a>
+                          <!-- 发表问题的Modal -->
+                          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                          <h4 class="modal-title">发布问题</h4>
+                                      </div>
+                                      <div class="modal-body">
+
+
+
+
+
+
+
+
+
+                                          <form class="form-horizontal" role="form" action="{% url 'pythonnav:ask_question' %}" method="post">
+                                          {% csrf_token %}
+
+
+
+
+
+
+                                              <div class="form-group">
+                                                  <label  class="col-lg-2 control-label">分类</label>
+                                                  <div class="col-lg-10">
+                                                      {% for i in es %}
+                                                      <label class="checkbox-inline">
+                                                          <input type="radio" id="inlineCheckbox" value={{ i }} name="radio">{{ i }}
+                                                      </label>
+                                                      {% endfor %}
+                                                  </div>
+                                              </div>
+
+
+
+
+
+                                              <div class="form-group">
+                                                  <label  class="col-lg-2 control-label">标题</label>
+                                                  <div class="col-lg-10">
+                                                      <input type="text" class="form-control" id="cc" placeholder="" name="question_title">
+                                                  </div>
+                                              </div>
+
+                                              <div class="form-group">
+                                                  <label class="col-lg-2 control-label">关键词</label>
+                                                  <div class="col-lg-10">
+                                                      <input type="text" class="form-control" id="inputPassword1" placeholder="" name="question_keywords">
+                                                  </div>
+                                              </div>
+
+                                              <div class="form-group">
+                                                  <label class="col-lg-2 control-label">正文</label>
+                                                  <div class="col-lg-10">
+                                                      <textarea id="" class="form-control" cols="30" rows="10" name="question_content"></textarea>
+                                                  </div>
+                                              </div>
+
+                                              <div class="form-group">
+                                                  <div class="col-lg-offset-2 col-lg-10">
+                                                      <span class="btn green fileinput-button">
+                                                        <i class="icon-plus icon-white"></i>
+                                                        <span>附件</span>
+                                                        <input type="file" multiple=""  name="files[]">
+                                                      </span>
+                                                      <button type="submit" class="btn btn-send" type="submit">发布</button>
+                                                  </div>
+                                              </div>
+                                          </form>
+
+
+
+
+
+
+
+
+                                      </div>
+                                  </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                          </div><!-- /.modal -->
+
+
+
+                          <!-- 修改头像的Modal -->
+                          <div class="modal fade" id="ChangeHeadImgModal" tabindex="-1" role="dialog" aria-labelledby="ChangeHeadImgModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                          <h4 class="modal-title">换个头像换个心情</h4>
+                                      </div>
+                                      <div class="modal-body">
+
+                                          <div class="form-group">
+                                              <label>
+                                                  {% for img in imgs %}
+                                                  <a data-toggle="modal" href="#ChangeHeadImgModal">
+                                                  <img src="{{ img.headImg.url }}" alt="" width="200" height="200">
+                                                  </a>
+                                                  {% endfor %}
+                                              </label>
+
+                                          </div>
+
+                                          <div class="form-group">
+                                              <label>
+                                                  <h5><a href="#">{{ request.user.username }}</a></h5>
+                                                  <span><a href="#">{{ request.user.email }}</a></span>
+                                              </label>
+                                          </div>
+
+                                          <div class="form-group">
+                                             <form role="form" enctype="multipart/form-data" action="{% url 'pythonnav:uploadImg' %}" method="POST">
+                                             {% csrf_token %}
+                                             <input class="btn-info" type="file" name="img">
+                                             <button class="btn-info" type="submit">变成头像</button>
+                                             </form>
+
+                                          </div>
+
+                                      </div>
+                                  </div><!-- /.modal-content -->
+                              </div><!-- /.modal-dialog -->
+                          </div><!-- /.modal -->
+
+
+
+
+
+                      </div>
+                      <ul class="inbox-nav inbox-divider">
+                          <li class="active">
+                              <a href="#"><i class="icon-envelope-alt"></i> 所有问题<span class="label label-danger pull-right">*</span></a>
+
+                          </li>
+
+                          <li>
+                              <a data-toggle="modal" href="#ChangeHeadImgModal"><i class="icon-bookmark-empty"></i>换个头像换个心情</a>
+                          </li>
+
+                      </ul>
+                      <ul class="nav nav-pills nav-stacked labels-info inbox-divider">
+                          <li> <h4>有问题找站长</h4> </li>
+                          <li> <a href="http://weibo.com/234008109" target="view_window"> <i class=" icon-sign-blank text-danger"></i> 微博 </a> </li>
+                          <li> <a href="https://coding.net/u/kylecloud" target="view_window"> <i class=" icon-sign-blank text-success"></i> coding </a> </li>
+                          <li> <a href="https://www.zhihu.com/people/zhang-kun-28-22/" target="view_window"> <i class=" icon-sign-blank text-info "></i> 知乎 </a>
+                          <li> <a href="https://github.com/584807419" target="view_window"> <i class=" icon-sign-blank text-warning "></i> GitHub </a>
+                          <li> <a href="http://blog.csdn.net/u013205877" target="view_window"> <i class=" icon-sign-blank text-primary "></i> CSDN </a>
+                          </li>
+                      </ul>
+
+                      </ul>
+
+
+                  </aside>
+                  <aside class="lg-side">
+                      <div class="inbox-head">
+                          <h3>日日行，不怕千万里；常常做，不怕千万事。——《格言联璧·处事》</h3>
+                      </div>
+                      <div class="inbox-body">
+                         <div class="mail-option">
+                             <div class="btn-group">
+                                 <a class="btn mini blue" href="#" data-toggle="dropdown">
+                                     分类筛选
+                                     <i class="icon-angle-down "></i>
+                                 </a>
+                                 <ul class="dropdown-menu">
+                                     <li><a href="#"><i class="icon-pencil"></i>传递给类别给view</a></li>
+                                     <li><a href="#"><i class="icon-ban-circle"></i>重复功能不写了</a></li>
+                                     <li class="divider"></li>
+                                     <li><a href="#"><i class="icon-trash"></i> Delete</a></li>
+                                 </ul>
+                             </div>
+                         </div>
+
+
+
+
+                          <table class="table table-inbox table-hover">
+                            <a>
+                              <tr class="unread">
+                                  <td class="view-message  inbox-small-cells">分类</td>
+                                  <td class="view-message  dont-show">作者</td>
+                                  <td class="view-message ">主题</td>
+                                  <td class="view-message  text-right">时间</td>
+                              </tr>
+
+                            {% for i in q.object_list %}
+                              <tr class="unread">
+
+
+                                  <td class="view-message  dont-show">{{ i.question_author }}</td>
+
+                                  <td class="view-message ">
+                                  <a href={% url 'pythonnav:questioncontent' i.id %}>
+                                  {{ i.question_title }}
+                                  </a>
+                                  </td>
+
+                                  <td class="view-message  inbox-small-cells">{{ i.question_category }}</i></td>
+                                  <td class="view-message  text-right">{{ i.question_date }}</td>
+                               </tr>
+                            {% endfor %}
+
+                            </tbody>
+                          </table>
+                          <div style="float:right">
+                          <p>
+                                {# q.paginator.page_range 这个函数返回包含一个所有页码的range对象,也就是说 range(1, q.paginator.num_pages + 1) #}
+                                {% for page_number in q.paginator.page_range %}
+                                    {% ifequal page_number q.number %}
+                                        <button type="button" class="btn btn-primary btn-sm active"> {{ page_number }} </button>
+                                    {% else %}
+                                        <a href="?page={{ page_number }}"> <button type="button" class="btn btn-default btn-sm">{{ page_number }} </button></a>
+                                    {% endifequal %}
+                                {% endfor %}
+                          </p>
+                          </div>
+                      </div>
+                  </aside>
+              </div>
+              <!--mail inbox end-->
+          </section>
+      </section>
+      <!--main content end-->
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+{% load staticfiles %}
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="Mosaddek">
+<meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+<link rel="shortcut icon" href="{% static 'pythonnav/img/favicon.html' %}">
+
+<title>Python 大学习 & Python Django Flask </title>
+
+<!-- Bootstrap core CSS -->
+<link href="{% static 'pythonnav/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'pythonnav/css/bootstrap-reset.css' %}"rel="stylesheet">
+<!--external css-->
+<link href="{% static 'pythonnav/assets/font-awesome/css/font-awesome.css' %}" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<link href="{% static 'pythonnav/css/style.css' %}" rel="stylesheet">
+<link href="{% static 'pythonnav/css/style-responsive.css' %}" rel="stylesheet" />
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+<!--[if lt IE 9]>
+  <script src="{% static 'pythonnav/js/html5shiv.js' %}"></script>
+  <script src="{% static 'pythonnav/js/respond.min.js' %}"></script>
+<![endif]-->
+
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js">
+</script>
+
+<script>
+    function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+    var csrftoken = getCookie('csrftoken');
+    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+</script>
+
+<script>
+$(document).ready(function(){
+  $("#login1").click(function(){
+
+      $.post("{% url 'pythonnav:user_login' %}",
+               {
+                username:$("#username").val(),
+                password:$("#password").val(),
+               },
+                function(ret){
+                     if (ret==1){
+
+                        window.location.href = "{% url 'pythonnav:index' %}";
+                        }
+                      else{
+                         $(".form-signin-heading").text("sorry , 账号或者密码错误喽 !");
+                        }
+
+		});
+
+
+  });
+});
+</script>
+
+</head>
+
+<body class="login-body">
+
+<div class="container">
+<div class="form-signin" >
+    <h2 class="form-signin-heading">欢迎登陆</h2>
+    <div class="login-wrap">
+        <input type="text" class="form-control" placeholder="账户名" autofocus name="username" id="username">
+        <input type="password" class="form-control" placeholder="密码" name="password" id="password">
+
+        <label class="checkbox">
+            <a href="{% url 'pythonnav:register_html' %}">注册新账户</a>
+            <span class="pull-right"> <a href="{% url 'pythonnav:form_component_html' %}"> 忘记密码</a></span>
+        </label>
+
+
+        <button class="btn btn-lg btn-login btn-block" id="login1">登陆</button>
+
+        <!--<p>or you can sign in via social network</p>-->
+        <!--<div class="login-social-link">-->
+            <!--<a href="index.html" class="facebook">-->
+                <!--<i class="icon-facebook"></i>-->
+                <!--QQ登陆-->
+            <!--</a>-->
+            <!--<a href="index.html" class="twitter">-->
+                <!--<i class="icon-twitter"></i>-->
+                <!--微博登陆-->
+            <!--</a>-->
+        <!--</div>-->
+
+    </div>
+
+</div>
+</div>
+
+
+
+</body>
+</html>

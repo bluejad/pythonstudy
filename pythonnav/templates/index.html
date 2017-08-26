@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block maincontent %}
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!--state overview start-->
+              <div class="row state-overview">
+                  <div class="col-lg-3 col-sm-6">
+                      <section class="panel">
+                          <div class="symbol terques">
+                              <i class="icon-user"></i>
+                          </div>
+                          <div class="value">
+                              <h1>5</h1>
+                              <p>在线教程</p>
+                          </div>
+                      </section>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                      <section class="panel">
+                          <div class="symbol red">
+                              <i class="icon-tags"></i>
+                          </div>
+                          <div class="value">
+                              <h1>5</h1>
+                              <p>电子书</p>
+                          </div>
+                      </section>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                      <section class="panel">
+                          <div class="symbol yellow">
+                              <i class="icon-shopping-cart"></i>
+                          </div>
+                          <div class="value">
+                              <h1>2</h1>
+                              <p>工具下载</p>
+                          </div>
+                      </section>
+                  </div>
+                  <div class="col-lg-3 col-sm-6">
+                      <section class="panel">
+                          <div class="symbol blue">
+                              <i class="icon-bar-chart"></i>
+                          </div>
+                          <div class="value">
+                              <h1>4</h1>
+                              <p>视频</p>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+              <!--state overview end-->
+
+              <div class="row">
+                  <div class="col-lg-8">
+                      <!--custom chart start-->
+                      <div class="border-head">
+                          <h3>学习路径</h3>
+                      </div>
+                      <div class="custom-bar-chart">
+                          <div class="bar">
+                              <div class="title">基础</div>
+                              <div class="value tooltips" data-original-title="基础" data-toggle="tooltip" data-placement="top">5%</div>
+                          </div>
+                          <div class="bar doted">
+                              <div class="title">爬虫</div>
+                              <div class="value tooltips" data-original-title="爬虫" data-toggle="tooltip" data-placement="top">10%</div>
+                          </div>
+                          <div class="bar ">
+                              <div class="title">博客</div>
+                              <div class="value tooltips" data-original-title="写博客" data-toggle="tooltip" data-placement="top">15%</div>
+                          </div>
+                          <div class="bar doted">
+                              <div class="title">Flask</div>
+                              <div class="value tooltips" data-original-title="学Flask" data-toggle="tooltip" data-placement="top">20%</div>
+                          </div>
+                          <div class="bar">
+                              <div class="title">MongoDB</div>
+                              <div class="value tooltips" data-original-title="MongoDB" data-toggle="tooltip" data-placement="top">25%</div>
+                          </div>
+                          <div class="bar doted">
+                              <div class="title">Bootstrap</div>
+                              <div class="value tooltips" data-original-title="看Bootstrap" data-toggle="tooltip" data-placement="top">30%</div>
+                          </div>
+                          <div class="bar">
+                              <div class="title">算法</div>
+                              <div class="value tooltips" data-original-title="看算法" data-toggle="tooltip" data-placement="top">35%</div>
+                          </div>
+                          <div class="bar doted">
+                              <div class="title">Django</div>
+                              <div class="value tooltips" data-original-title="学Django" data-toggle="tooltip" data-placement="top">40%</div>
+                          </div>
+                          <div class="bar ">
+                              <div class="title">本站</div>
+                              <div class="value tooltips" data-original-title="写Python大学习" data-toggle="tooltip" data-placement="top">45%</div>
+                          </div>
+                          <div class="bar doted">
+                              <div class="title">没学</div>
+                              <div class="value tooltips" data-original-title="还没学" data-toggle="tooltip" data-placement="top">10%</div>
+                          </div>
+                          <div class="bar ">
+                              <div class="title">没学</div>
+                              <div class="value tooltips" data-original-title="还没学" data-toggle="tooltip" data-placement="top">10%</div>
+                          </div>
+                          <div class="bar doted">
+                              <div class="title">没学</div>
+                              <div class="value tooltips" data-original-title="还没学" data-toggle="tooltip" data-placement="top">10%</div>
+                          </div>
+                      </div>
+                      <!--custom chart end-->
+                  </div>
+                  <div class="col-lg-4">
+                      <!--new earning start-->
+                      <div class="panel terques-chart">
+
+                          <div class="chart-tittle">
+                              <p><span class="title">这是一个学习和分享的地方</span></p>
+                              <a href="https://jq.qq.com/?_wv=1027&k=4ENljqb"><span class="title">Python大学习QQ群 464137109 </span></a>
+                              <a href="https://aliasan-conf.taijiankong.cn/duotai/7jXEI1cCRic.pac"><span> 站长的Google代理pac </span></a>
+                              </span>
+                          </div>
+                      </div>
+                      <!--new earning end-->
+
+                      <!--total earning start-->
+                      <div class="panel green-chart">
+                          <div class="panel-body">
+                              <div class="chart">
+                                  <div class="heading" style="text-align: center;">
+                                       <img src="{% static 'pythonnav/img/weixinpublic.jpg' %}" alt="" width="258" height="258">
+                                      <span class="title">微信公众号  scan and get more </span>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div>
+                      <!--total earning end-->
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-lg-4">
+                      <!--user info table start-->
+                      <section class="panel">
+                          <div class="panel-body">
+                              <a href="#" class="task-thumb">
+                                  <img src="{% static 'pythonnav/img/avatar1.jpg' %}" alt="">
+                              </a>
+                              <div class="task-thumb-details">
+                                  <h1><a href="#">张昆</a></h1>
+                                  <p>584807419@qq.com</p>
+                              </div>
+                          </div>
+                          <table class="table table-hover personal-task">
+                              <tbody>
+                                <tr>
+                                    <td>
+                                        <i class=" icon-tasks"></i>
+                                    </td>
+                                    <td>北京奇虎360</td>
+                                    <td>2016-2017</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="icon-tasks"></i>
+                                    </td>
+                                    <td>辽宁方得</td>
+                                    <td> 2015</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="icon-tasks"></i>
+                                    </td>
+                                    <td>辽宁翼通</td>
+                                    <td> 2015</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class=" icon-tasks"></i>
+                                    </td>
+                                    <td>北京用友</td>
+                                    <td> 2014</td>
+                                </tr>
+                              </tbody>
+                          </table>
+                      </section>
+                      <!--user info table end-->
+                  </div>
+                  <div class="col-lg-8">
+                      <!--work progress start-->
+                      <section class="panel">
+                          <div class="panel-body progress-panel">
+                              <div class="task-progress">
+                                  <h1>技能点</h1>
+                                  <p>Python</p>
+                              </div>
+                              <div class="task-option">
+                                  <select class="styled">
+                                      <option>Python</option>
+                                      <option>安全</option>
+                                      <option>其他</option>
+                                  </select>
+                              </div>
+                          </div>
+                          <table class="table table-hover personal-task">
+                              <tbody>
+                              <tr>
+                                  <td>1</td>
+                                  <td>
+                                      Django
+                                  </td>
+                                  <td>
+                                      <span class="badge bg-important">65%</span>
+                                  </td>
+                                  <td>
+                                    <div id="work-progress1"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>2</td>
+                                  <td>
+                                      爬虫
+                                  </td>
+                                  <td>
+                                      <span class="badge bg-success">50%</span>
+                                  </td>
+                                  <td>
+                                      <div id="work-progress2"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td>
+                                      Flask
+                                  </td>
+                                  <td>
+                                      <span class="badge bg-info">40%</span>
+                                  </td>
+                                  <td>
+                                      <div id="work-progress3"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>4</td>
+                                  <td>
+                                      Linux
+                                  </td>
+                                  <td>
+                                      <span class="badge bg-warning">30%</span>
+                                  </td>
+                                  <td>
+                                      <div id="work-progress4"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>5</td>
+                                  <td>
+                                      DB
+                                  </td>
+                                  <td>
+                                      <span class="badge bg-primary">55%</span>
+                                  </td>
+                                  <td>
+                                      <div id="work-progress5"></div>
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
+                      </section>
+                      <!--work progress end-->
+                  </div>
+              </div>
+
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+{% endblock %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="/pythonnav/static/img/favicon.html">
+
+    <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/pythonnav/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/pythonnav/static/css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="assets/font-awesome//pythonnav/static/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="/pythonnav/static/css/style.css" rel="stylesheet">
+    <link href="/pythonnav/static/css/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/pythonnav/static/js/html5shiv.js"></script>
+    <script src="/pythonnav/static/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+  <body class="login-body">
+
+    <div class="container">
+
+      <form class="form-signin" action="{% url 'pythonnav:user_register' %}" method="post">
+      {% csrf_token %}
+        <h2 class="form-signin-heading">账户注册</h2>
+        <div class="login-wrap">
+            <input type="text" class="form-control" placeholder="账户名" autofocus name="username">
+            <input type="password" class="form-control" placeholder="密码" name="password">
+            <input type="text" class="form-control" placeholder="电子邮件" name="email">
+
+            <button class="btn btn-lg btn-login btn-block" type="submit">注册</button>
+
+            <!--<p>or you can sign in via social network</p>-->
+            <!--<div class="login-social-link">-->
+                <!--<a href="index.html" class="facebook">-->
+                    <!--<i class="icon-facebook"></i>-->
+                    <!--QQ登陆-->
+                <!--</a>-->
+                <!--<a href="index.html" class="twitter">-->
+                    <!--<i class="icon-twitter"></i>-->
+                    <!--微博登陆-->
+                <!--</a>-->
+            <!--</div>-->
+
+        </div>
+
+      </form>
+
+    </div>
+
+
+  </body>
+</html>

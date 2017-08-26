@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block sidebar %}
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu">
+                  <li class="">
+                      <a class="" href="{% url 'pythonnav:index' %}">
+                          <i class="icon-dashboard"></i>
+                          <span>首页</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu active">
+                      <a href="javascript:;" class="">
+                          <i class="icon-book"></i>
+                          <span>Python</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="{% url 'pythonnav:calendar_html' %}">学习路线</a></li>
+                          <li class="active"><a class="" href="buttons.html"><i class="icon-cog"></i>学习资源</a></li>
+                          <li><a href="{% url 'pythonnav:blogindex_html' %}">技术交流</a></li>
+                          <li><a class="" href="{% url 'pythonnav:profile_html' %}">我的主页</a></li>
+
+                      </ul>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon-tasks"></i>
+                          <span>资源</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="{% url 'resourcedownload:dynamic_table_html' %}">下载站</a></li>
+                          <li><a class="" href="{% url 'resourcedownload:querystation_html' %}">查询站</a></li>
+                          <li><a class="" href="http://devnav.win/">更新中/a></li>
+                      </ul>
+                  </li>
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+{% endblock %}
+{% block maincontent %}
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-sm-6">
+                      <section class="panel">
+                          <header class="panel-heading">
+                               在线教程
+                          </header>
+                          <div class="panel-body">
+                              <a href="http://www.pythondoc.com/pythontutorial3/index.html" target="view_window"><button type="button" class="btn btn-default">Python 入门指南</button></a>
+                              <a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" target="view_window"><button type="button" class="btn btn-info">Python 小白新手教程</button></a>
+                              <a href="http://code.ziqiangxuetang.com/python/python-tutorial.html" target="view_window"><button type="button" class="btn btn-warning">Python 基础教程</button></a>
+                              <a href="http://www.runoob.com/python3/python3-tutorial.html" target="view_window"><button type="button" class="btn btn-success">Python 3 菜鸟教程</button></a>
+                              <a href="http://docspy3zh.readthedocs.io/en/latest/" target="view_window"><button type="button" class="btn btn-primary">Python 3 文档</button></a>
+
+
+
+
+
+                          </div>
+                      </section>
+                  </div>
+                  <div class="col-sm-6">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              超清电子书
+                          </header>
+                          <div class="panel-body">
+                              <a href="https://pan.baidu.com/s/1nvfn9Pn" target="view_window"><button type="button" class="btn btn-shadow btn-default">编程小白的第一本 Python 入门书</button></a>
+                              <a href="https://pan.baidu.com/s/1c2IJn48" target="view_window"><button type="button" class="btn btn-shadow btn-primary">Python学习手册</button></a>
+
+                              <a href="http://download.csdn.net/download/u013205877/9920875" target="view_window"><button type="button" class="btn btn-shadow btn-info">算法图解</button></a>
+                              <a href="http://download.csdn.net/download/u013205877/9916002" target="view_window"><button type="button" class="btn btn-shadow btn-warning">狗书</button></a>
+                              <a href="http://download.csdn.net/download/u013205877/9928836" target="view_window"><button type="button" class="btn btn-shadow btn-danger">Python Cookbook</button></a>
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-sm-6">
+                      <section class="panel">
+                          <header class="panel-heading">
+                               IDE
+                          </header>
+                          <div class="panel-body">
+                              <a href="https://www.jetbrains.com/pycharm/" target="view_window"><button type="button" class="btn btn-round btn-default">PyCharm</button></a>
+                              <a href="https://jingyan.baidu.com/article/cd4c2979101f02756f6e6064.html" target="view_window"><button type="button" class="btn btn-round btn-primary">Eclipse+PyDev</button></a>
+                              <!--<button type="button" class="btn btn-round btn-success">Success</button>-->
+                              <!--<button type="button" class="btn btn-round btn-info">Info</button>-->
+                              <!--<button type="button" class="btn btn-round btn-warning">Warning</button>-->
+                              <!--<button type="button" class="btn btn-round btn-danger">Danger</button>-->
+                          </div>
+                      </section>
+
+                      <section class="panel">
+                          <header class="panel-heading">
+                              基础视频 密码 g0el
+                          </header>
+                          <div class="panel-body">
+
+                              <a href="http://pan.baidu.com/s/1eRA1LUM" target="view_window">
+                                  <button type="button" class="btn btn-success"><i class="icon-cloud"></i> python基础 </button>
+                              </a>
+
+                          </div>
+                      </section>
+                  </div>
+                  <div class="col-sm-6">
+
+                      <section class="panel">
+                          <header class="panel-heading">
+                              机器学习视频教程 密码 2vf4
+                          </header>
+                          <div class="panel-body">
+                              <a href="http://pan.baidu.com/s/1dEDlFrV" target="view_window">
+                                  <button type="button" class="btn btn-success"><i class="icon-eye-open"></i> 机器学习 </button>
+                              </a>
+                          </div>
+                      </section>
+
+                      <section class="panel">
+                          <header class="panel-heading">
+                              人工智能视频教程 密码 mufd
+                          </header>
+                          <div class="panel-body">
+                               <a href="http://pan.baidu.com/s/1o80Yoqe" target="view_window">
+                              <button type="button" class="btn btn-info "><i class="icon-refresh"></i> 人工智能</button>
+                               </a>
+                          </div>
+                      </section>
+
+                  </div>
+              </div>
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "resourcedownload/base.html" %}
+
+{% load staticfiles %}
+
+
+{% block maincontent %}
+
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              查询站
+                          </header>
+                          <table class="table table-striped border-top" id="sample_1">
+                          <thead>
+                          <tr>
+
+                              <th class="hidden-phone">地址</th>
+                              <th>简介</th>
+
+                          </tr>
+                          </thead>
+                          <tbody>
+
+                          {% for i in q.object_list %}
+                              <tr class="odd gradeX">
+                                <td ><a href="{{ i.stationaddr }}" target="view_window">{{ i.stationaddr }}</a></td>
+                                <td ><span>{{ i.stationintroduce }}</span></td>
+                              </tr>
+                            {% endfor %}
+
+                          <div style="float:right">
+                          <p>
+                                {# q.paginator.page_range 这个函数返回包含一个所有页码的range对象,也就是说 range(1, q.paginator.num_pages + 1) #}
+                                {% for page_number in q.paginator.page_range %}
+                                    {% ifequal page_number q.number %}
+                                        <button type="button" class="btn btn-primary btn-sm active"> {{ page_number }} </button>
+                                    {% else %}
+                                        <a href="?page={{ page_number }}"> <button type="button" class="btn btn-default btn-sm">{{ page_number }} </button></a>
+                                    {% endifequal %}
+                                {% endfor %}
+                          </p>
+                          </div>
+
+
+
+
+
+
+                          </tbody>
+                          </table>
+                      </section>
+                  </div>
+              </div>
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+
+{% endblock %}
