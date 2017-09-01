@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^pythonnav/', include('pythonnav.urls',namespace="pythonnav")),
     url(r'^resourcedownload/', include('resourcedownload.urls',namespace="resourcedownload")),
 	url(r'^wx/', include('wechat.urls',namespace="wechat")),
+	url(r'^achievement/', include('achievement.urls',namespace="achievement")),
 
 ]

@@ -1,0 +1,105 @@
+{% extends "achievement/base.html" %}
+
+{% block sidebar %}
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu">
+                  <li>
+                       <a class="" href="{% url 'pythonnav:index' %}">
+                          <i class="icon-dashboard"></i>
+                          <span>首页</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu ">
+                      <a href="javascript:;" class="">
+                          <i class="icon-book"></i>
+                          <span>Python</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub ">
+                          <li><a class="" href="{% url 'pythonnav:calendar_html' %}">学习路线</a></li>
+                          <li><a class="" href="{% url 'pythonnav:buttons_html' %}">学习资源</a></li>
+                          <li><a class="" href="{% url 'pythonnav:blogindex_html' %}"><i class="icon-cog"></i>技术交流</a></li>
+                          <li><a href="{% url 'pythonnav:profile_html' %}"></i>我的主页</a></li>
+
+                      </ul>
+                  </li>
+
+                  <li class="sub-menu active">
+                      <a href="javascript:;" class="">
+                          <i class="icon-th"></i>
+                          <span>成就墙</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub active">
+                          <li class=""><a class="" href="{% url 'achievement:index' %}">所有成就</a></li>
+                          <li class="active"><a class="" href="{% url 'achievement:achievement' %}">今年</a></li>
+                          <li><a class="" href="http://devnav.win/">更新中</a></li>
+                      </ul>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon-tasks"></i>
+                          <span>资源</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="{% url 'resourcedownload:dynamic_table_html' %}">下载站</a></li>
+                          <li><a class="" href="{% url 'resourcedownload:querystation_html' %}">查询站</a></li>
+                          <li><a class="" href="http://devnav.win/">更新中/a></li>
+                      </ul>
+                  </li>
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+{% endblock %}
+
+{% block maincontent %}
+
+
+      <!--sidebar end-->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-lg-12" style="border-top:1px solid #000">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              目标详情
+                          </header>
+                          <div class="panel-body">
+                              <form role="form" class="form-horizontal tasi-form">
+                                  {% for i in achievementcontent %}
+                                  <div class="form-group has-success">
+
+                                      <label class="col-lg-2 control-label">{{ i.achievement_title }}</label>
+
+                                  </div>
+                                  <div class="form-group has-error">
+                                      <label class="col-lg-2 control-label" >{{ i.achievement_text }}</label>
+
+                                  </div>
+                                  <div class="form-group has-warning">
+                                      <label class="col-lg-2 control-label">{{ i.achievement_author }}</label>
+                                      <p class="help-block">{{ i.achievement_date }}</p>
+                                  </div>
+                                  {% endfor %}
+
+                              </form>
+
+                          </div>
+                      </section>
+                  </div>
+              </div>
+
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+{% endblock %}

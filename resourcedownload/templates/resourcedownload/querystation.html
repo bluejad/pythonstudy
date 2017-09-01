@@ -2,6 +2,66 @@
 
 {% load staticfiles %}
 
+{% block sidebar %}
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu">
+                  <li>
+                       <a class="" href="{% url 'pythonnav:index' %}">
+                          <i class="icon-dashboard"></i>
+                          <span>首页</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon-book"></i>
+                          <span>Python</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub">
+                          <li><a class="" href="{% url 'pythonnav:calendar_html' %}">学习路线</a></li>
+                          <li><a class="" href="{% url 'pythonnav:buttons_html' %}">学习资源</a></li>
+                          <li><a class="" href="{% url 'pythonnav:blogindex_html' %}">技术交流</a></li>
+                          <li><a class="" href="{% url 'pythonnav:profile_html' %}">我的主页</a></li>
+
+                      </ul>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a href="javascript:;" class="">
+                          <i class="icon-th"></i>
+                          <span>成就墙</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub">
+                          <li class=""><a class="" href="{% url 'achievement:index' %}">所有成就</a></li>
+                          <li><a class="" href="{% url 'achievement:achievement' %}">今年</a></li>
+                          <li><a class="" href="http://devnav.win/">更新中</a></li>
+                      </ul>
+                  </li>
+
+                  <li class="sub-menu active">
+                      <a href="javascript:;" class="">
+                          <i class="icon-tasks"></i>
+                          <span>资源</span>
+                          <span class="arrow"></span>
+                      </a>
+                      <ul class="sub active">
+                          <li><a class="" href="{% url 'resourcedownload:dynamic_table_html' %}">下载站</a></li>
+                          <li class="active"><a class="" href="{% url 'resourcedownload:querystation_html' %}">查询站</a></li>
+                          <li><a class="" href="http://devnav.win/">更新中</a></li>
+                      </ul>
+                  </li>
+
+
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+{% endblock %}
 
 {% block maincontent %}
 

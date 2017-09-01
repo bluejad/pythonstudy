@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'pythonnav',
     'resourcedownload',
-	'wechat'
+	'wechat',
+	'achievement',
 
 )
 
@@ -133,7 +134,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.163.com'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'python_smtp_test@163.com'
-EMAIL_HOST_PASSWORD = '这里是邮箱密码'
+EMAIL_HOST_PASSWORD = '密码'
 
 # CACHES = {
 #     'default': {
