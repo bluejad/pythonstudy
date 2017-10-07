@@ -47,7 +47,6 @@ def set_new_purpose(request):
     achievement_title = request.POST['achievement_title']
     achievement_text = request.POST['achievement_text']
     yearcategory = AchievementYear.objects.get(achievement_date = str(datetime.datetime.now().year))
-    print type(yearcategory)
 
     qqqq = Achievement(achievement_title=achievement_title, achievement_text=achievement_text, achievement_author=request.user, achievement_year = yearcategory,achievement_reach=0)
     qqqq.save()

@@ -8,8 +8,8 @@ from django.http import HttpResponse
 import time
 import datetime
 
-#key = 'QuestionCache'
-#from django.core.cache import cache
+key = 'QuestionCache'
+from django.core.cache import cache
 # Create your views here.
 
 #主页
@@ -38,10 +38,10 @@ def blogindex_html(request):
     from django.core.paginator import PageNotAnInteger
     limit = 10  # 每页显示的记录条数
 
-    #if cache.has_key(key):
-    #    question = cache.get(key)
-    #else:
-    question = Question.objects.all().order_by('-question_date')
+    if cache.has_key(key):
+        question = cache.get(key)
+    else:
+        question = Question.objects.all().order_by('-question_date')
     paginator = Paginator(question,limit)#实例化一个分页对象
 
     page = request.GET.get('page') #获取到页码
@@ -73,9 +73,7 @@ def blogindex_html(request):
 
 def questioncontents(request,detail_question_id):
     question = get_object_or_404(Question, id=detail_question_id)
-
     questionreplys = ReplyQuestion.objects.filter(question_category=question)
-
     return render(request,'form_validation.html',{'question':question, 'questionreplys':questionreplys})
 
 
@@ -238,7 +236,7 @@ def ask_question(request):
     qqqq.save()
 
     #更新缓存
-    #cache.set(key, list(Question.objects.all().order_by('-question_date')))
+    cache.set(key, list(Question.objects.all().order_by('-question_date')))
 
     return redirect('pythonnav:blogindex_html')
 
@@ -248,12 +246,8 @@ def reply_question(request):
     question_id = request.POST['question_id']
     question_reply_text = request.POST['question_reply_content']
     question_author = request.user
-    question_date = datetime.datetime.now()
-
     question = get_object_or_404(Question, id=question_id)
-
-    replyqqqq = ReplyQuestion(question_category=question,question_author=question_author,question_date=question_date,question_text=question_reply_text,)
-
+    replyqqqq = ReplyQuestion(question_category=question,question_author=question_author,question_text=question_reply_text,)
     replyqqqq.save()
 
     return redirect('pythonnav:blogindex_html')

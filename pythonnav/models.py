@@ -12,14 +12,20 @@ class QuestionCategory(models.Model):
         verbose_name = '问题分类'
         verbose_name_plural = '问题分类'
 
+# 定义本类为抽象基类，减少冗余代码
+class QuestionBase(models.Model):
+    question_date = models.DateTimeField('发表时间', auto_now=True)
+    question_author = models.ForeignKey('auth.User', blank=True, null=True, verbose_name='作者')  # 外键不能直接写别名
+    question_text = models.CharField('正文内容', max_length=200)
 
-class Question(models.Model):
+    class Meta:
+        abstract = True
+
+
+class Question(QuestionBase):
     question_category = models.ForeignKey(QuestionCategory,verbose_name="归属分类")
     question_title = models.CharField('标题', max_length=50)
-    question_author = models.ForeignKey('auth.User', blank=True, null=True,verbose_name='作者')#外键不能直接写别名
     question_keywords = models.CharField('关键词',max_length=20)
-    question_date = models.DateTimeField('发表时间', auto_now=True)
-    question_text = models.CharField('正文内容', max_length=200)
 
     def __unicode__(self):
         return self.question_title
@@ -28,11 +34,8 @@ class Question(models.Model):
         verbose_name = '技术问题'
         verbose_name_plural = '技术问题'
 
-class ReplyQuestion(models.Model):
+class ReplyQuestion(QuestionBase):
     question_category = models.ForeignKey(Question,verbose_name="归属的问题")
-    question_author = models.ForeignKey('auth.User', blank=True, null=True,verbose_name='作者')
-    question_date = models.DateTimeField('发表时间')
-    question_text = models.CharField('回复的内容', max_length=200)
 
     def __unicode__(self):
         return self.question_text
@@ -40,7 +43,6 @@ class ReplyQuestion(models.Model):
     class Meta:
         verbose_name = '问题答复'
         verbose_name_plural = '问题答复'
-
 
 class Userphoto(models.Model):
     userid = models.ForeignKey('auth.User', blank=False, null=True, verbose_name='用户')
@@ -50,10 +52,7 @@ class Userphoto(models.Model):
         verbose_name = '用户头像'
         verbose_name_plural = '用户头像'
 
-class StudyrRecoder(models.Model):
-    question_author = models.ForeignKey('auth.User', blank=True, null=True,verbose_name='用户')
-    question_date = models.DateTimeField('发表时间', auto_now=True)
-    question_text = models.CharField('正文内容', max_length=200)
+class StudyrRecoder(QuestionBase):
 
     class Meta:
         verbose_name = '学习日记'

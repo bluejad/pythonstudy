@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '63kvr3$^g&l9=&8)v5rv0i&o%@ly+cc($p_u^2^9)tdu)ev4zq'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -40,8 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'pythonnav',
     'resourcedownload',
-	'wechat',
-	'achievement',
+    'wechat',
+    'achievement',
 
 )
 
@@ -113,10 +113,17 @@ STATIC_URL = '/static/'
 # 当运行 python manage.py collectstatic 的时候
 # STATIC_ROOT 文件夹 是用来将所有STATICFILES_DIRS中所有文件夹中的文件，以及各app中static中的文件都复制过来
 # 把这些文件放到一起是为了用apache等部署的时候更方便
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
-MEDIA_URL = '/upload_picture/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'upload_picture')
+MEDIA_URL = 'upload_picture/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'upload_picture').replace('\\','/')
+
+# 其它 存放静态文件的文件夹，可以用来存放项目中公用的静态文件，里面不能包含 STATIC_ROOT
+# 如果不想用 STATICFILES_DIRS 可以不用，都放在 app 里的 static 中也可以
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "common_static"),
+    '/path/to/others/static/',  # 用不到的时候可以不写这一行
+)
 
 # 这个是默认设置，Django 默认会在 STATICFILES_DIRS中的文件夹 和 各app下的static文件夹中找文件
 # 注意有先后顺序，找到了就不再继续找了
@@ -134,7 +141,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST = 'smtp.163.com'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'python_smtp_test@163.com'
-EMAIL_HOST_PASSWORD = '密码'
+EMAIL_HOST_PASSWORD = 'zk199245qqq'
 
 # CACHES = {
 #     'default': {
